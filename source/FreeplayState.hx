@@ -276,6 +276,10 @@ class FreeplayState extends MusicBeatState
 		funkay.screenCenter();
 		funkay.alpha = 0;
 		
+		#if android
+		addVirtualPad(LEFT_FULL, A_B_C_X_Y);
+		#end
+		
 		super.create();
 	}
 
@@ -344,8 +348,8 @@ class FreeplayState extends MusicBeatState
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
-		var space = FlxG.keys.justPressed.SPACE;
-		var ctrl = FlxG.keys.justPressed.CONTROL;
+		var space = FlxG.keys.justPressed.SPACE || virtualPad.buttonC.justPressed;
+		var ctrl = FlxG.keys.justPressed.CONTROL || virtualPad.buttonX.justPressed;
 
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
