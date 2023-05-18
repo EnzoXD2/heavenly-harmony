@@ -1,7 +1,7 @@
 package;
 
 #if android
-import android.content.Context;
+import android.os.Environment;
 import android.widget.Toast;
 #end
 import haxe.CallStack;
@@ -36,23 +36,13 @@ class SUtil
 	/**
 	 * This returns the external storage path that the game will use by the type.
 	 */
-	public static function getStorageDirectory(type:StorageType = DATA):String
+	public static function getStorageDirectory():String
 	{
-		var daPath:String = '';
-
 		#if android
-		switch (type)
-		{
-			case DATA:
-				daPath = Context.getFilesDir() + '/';
-			case EXTERNAL_DATA:
-				daPath = Context.getExternalFilesDir(null) + '/';
-		}
-		#elseif ios
-		daPath = LimeSystem.applicationStorageDirectory;
+		return Environment.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file') + '/';
+		#else
+		return '';
 		#end
-
-		return daPath;
 	}
 
 	/**
