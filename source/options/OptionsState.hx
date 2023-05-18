@@ -39,10 +39,19 @@ class OptionsState extends MusicBeatState
 	function openSelectedSubstate(label:String) {
 		switch(label) {
 			case 'notes':
+				#if android
+                                removeVirtualPad();
+                                #end
 				openSubState(new options.NotesSubState());
 			case 'controls':
+				#if android
+                                removeVirtualPad();
+                                #end
 				openSubState(new options.ControlsSubState());
 			case 'prefs':
+				#if android
+                                removeVirtualPad();
+                                #end
 				openSubState(new options.GraphicsSettingsSubState());
 		}
 	}
@@ -107,6 +116,10 @@ class OptionsState extends MusicBeatState
 
 		changeItem();
 		ClientPrefs.saveSettings();
+		
+		#if android
+		addVirtualPad(UP_DOWN, A_B_C);
+		#end
 
 		super.create();
 	}
@@ -139,7 +152,15 @@ class OptionsState extends MusicBeatState
 		if (controls.ACCEPT) {
 			openSelectedSubstate(options[curSelected]);
 		}
-	}
+		#if android
+                if (virtualPad.buttonC.justPressed) {
+                #if android
+                removeVirtualPad();
+                #end
+                openSubState(new android.AndroidControlsSubState());
+               }
+                #end
+	       }
 	
 	function changeItem(huh:Int = 0)
 	{
