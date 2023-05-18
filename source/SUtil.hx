@@ -12,6 +12,7 @@ import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import openfl.system.System as OpenFlSystem;
 import openfl.utils.Assets as OpenFlAssets;
+import lime.app.Application;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
