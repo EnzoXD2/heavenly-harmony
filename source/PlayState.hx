@@ -1187,6 +1187,11 @@ class PlayState extends MusicBeatState
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+	
+	        #if android
+		addAndroidControls();
+		androidControls.visible = true;
+		#end
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1249,6 +1254,10 @@ class PlayState extends MusicBeatState
 		noteTypeMap = null;
 		eventPushedMap.clear();
 		eventPushedMap = null;
+	
+	        #if android
+		addAndroidControls();
+		#end
 
 		// SONG SPECIFIC SCRIPTS
 		#if LUA_ALLOWED
