@@ -49,12 +49,18 @@
 		"type":"haxelib",
 		"version":"2.5.1"
 		},
-		
 		{
 		"name":"linc_luajit",
 		"type":"git",
 		"ref":"master",
 		"url":"https://github.com/Sirox228/linc_luajit"
+		},
+		
+		{
+		"name":"extension-androidtools",
+		"type":"git",
+		"ref":"master",
+		"url":"https://github.com/MAJigsaw77/extension-androidtools"
 		}
 	]
 }
